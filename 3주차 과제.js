@@ -96,3 +96,20 @@ console.log(deliveryCost(-500, "서울"));
 
 console.log(deliveryCost(30000, ""));
 // 출력: 3000 (빈 문자열은 일반 지역 취급)
+
+// 3) 비밀번호 유효성 검사
+const isValidPassword = (password) => {
+  // 길이가 8 이상이고 20 이하인지 확인
+  return password.length >= 8 && password.length <= 20;
+};
+
+// --- 실행 결과 확인 (테스트) ---
+
+// 1. 정상 (10글자) -> true
+console.log(isValidPassword("password123"));
+
+// 2. 너무 짧음 (5글자) -> false
+console.log(isValidPassword("short"));
+
+// 3. 너무 김 (21글자) -> false
+console.log(isValidPassword("verylongpassword12345"));
