@@ -52,3 +52,47 @@ console.log(greetingMessage("민자홍", "VIP"));
 
 console.log(greetingMessage("정인우", "일반"));
 // 출력: 안녕하세요, 정인우님! 즐거운 쇼핑 되세요.
+
+// 2) 배송비 계산
+const deliveryCost = function (orderAmount, deliveryArea) {
+  // 1. 예외 처리: 주문 금액이 0원 이하인 경우
+  if (orderAmount <= 0) {
+    return 0;
+  }
+
+  let finalDeliveryCost = 0;
+
+  // 2. 배송비 계산 (50,000원 미만이면 3,000원 부과)
+  if (orderAmount < 50000) {
+    finalDeliveryCost = 3000;
+  }
+  // 50,000원 이상이면 초기값 0이 유지 (무료 배송)
+
+  // 3. 추가 배송비 계산 (제주 또는 도서 지역)
+  // 배송지역이 빈 문자열("")인 경우는 이 조건에 걸리지 않아 기본 배송비만 적용됨
+  if (deliveryArea === "제주" || deliveryArea === "도서산간") {
+    finalDeliveryCost = finalDeliveryCost + 3000; // 기존 배송비에 3,000원 추가
+  }
+
+  return finalDeliveryCost;
+};
+
+// --- 실행 결과 확인 (테스트) ---
+
+console.log(deliveryCost(40000, "서울"));
+// 출력: 3000 (5만원 미만 + 일반)
+
+console.log(deliveryCost(60000, "서울"));
+// 출력: 0 (5만원 이상 무료 + 일반)
+
+console.log(deliveryCost(40000, "제주"));
+// 출력: 6000 (5만원 미만 3000 + 추가 3000)
+
+console.log(deliveryCost(60000, "도서산간"));
+// 출력: 3000 (5만원 이상 기본 무료 + 추가 3000)
+
+console.log(deliveryCost(-500, "서울"));
+// 출력: 0 (0원 이하)
+
+console.log(deliveryCost(30000, ""));
+// 출력: 3000 (빈 문자열은 일반 지역 취급)
