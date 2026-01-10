@@ -35,3 +35,20 @@ let userRating = 85.5;
 
 // 12) 알림 수신 동의 여부 (설정 변경 가능하므로 변수, 불리언)
 let isNotificationAgreed = false;
+
+// 2. 함수 작성 과제
+// 1) 환영 메시지 생성
+const greetingMessage = (memberName, memberGrade) => {
+  if (memberGrade === "VIP") {
+    return `🌟 VIP ${memberName}님, 특별한 혜택이 준비되어 있습니다!`;
+  } else {
+    return `안녕하세요, ${memberName}님! 즐거운 쇼핑 되세요.`;
+  }
+};
+
+// --- 실행 결과 확인 ---
+console.log(greetingMessage("민자홍", "VIP"));
+// 출력: 🌟 VIP 민자홍님, 특별한 혜택이 준비되어 있습니다!
+
+console.log(greetingMessage("정인우", "일반"));
+// 출력: 안녕하세요, 정인우님! 즐거운 쇼핑 되세요.
