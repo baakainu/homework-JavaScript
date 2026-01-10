@@ -113,3 +113,43 @@ console.log(isValidPassword("short"));
 
 // 3. 너무 김 (21글자) -> false
 console.log(isValidPassword("verylongpassword12345"));
+
+// 4) 포인트 적립 계산
+function calculatePoints(payAmount, memberGrade) {
+  let rewardRate = 0;
+
+  // 등급별 적립률 설정
+  if (memberGrade === "VIP") {
+    rewardRate = 0.05; // 5%
+  } else if (memberGrade === "GOLD") {
+    rewardRate = 0.03; // 3%
+  } else if (memberGrade === "SILVER") {
+    rewardRate = 0.01; // 1%
+  } else {
+    // 그 외(일반)
+    rewardRate = 0.005; // 0.5%
+  }
+
+  // 포인트 계산
+  const rewardPoints = payAmount * rewardRate;
+  // 소수점 이하를 무시, 정수만 사용
+  return parseInt(rewardPoints);
+}
+
+// --- 실행 결과 확인 (테스트) ---
+
+console.log(calculatePoints(100000, "VIP"));
+// 100,000 * 0.05 = 5,000 -> 출력: 5000
+
+console.log(calculatePoints(200000, "GOLD"));
+// 200,000 * 0.03 = 6,000 -> 출력: 6000
+
+console.log(calculatePoints(150000, "SILVER"));
+// 150,000 * 0.01 = 1,500 -> 출력: 1500
+
+console.log(calculatePoints(30000, "일반"));
+// 30,000 * 0.005 = 150 -> 출력: 150
+
+// 소수점 버림 테스트 (990원 결제 시 0.5%는 4.95원)
+console.log(calculatePoints(990, "일반"));
+// 4.95 -> 소수점 버림 -> 출력: 4
