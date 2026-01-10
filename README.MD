@@ -80,3 +80,46 @@ parseInt는 문자열을 분석, 변환해서 소수점을 잘라버리는 거�
 
 그리고 등급별로 포인트 단계를 나누기 위해 마찬가지로 다음주 배울 예정인 else if를 사용하였습니다.
 마지막으로 else 를 다시 사용해 일반 회원에게 적용되는 포인트를 적용시켰습니다.
+
+### 5. 영화 티켓 가격 계산
+
+마지막 결과 값 나오는 방식에 대해서 고민을 많이 했습니다.
+movieType 안에서 계산을 하자니 반복되는 과정도 많았고,
+만약 다른 조건이 더 붙는다면 수정할 부분이 너무 많아졌습니다.
+그리고 할인=뺼셈으로 생각해서
+
+```javascript
+price = price - price * 0.2;
+```
+
+로 처음에 생각을 했는데, 굳이 그럴 필요가 없없습니다.
+price \* 0.8 로 간단하게 해결했습니다.
+
+그리고 회고를 적으며 movieType을 switch로 쓰면 더 좋을거 같다고 생각이 들어서 적어봅니다!
+
+```javascript
+const totalPrice = function (movieType, earlyDiscount, numberOfViewer) {
+  let ticketPrice = 0;
+  switch (movieType) {
+    case "일반":
+      ticketPrice = 14000;
+      break;
+
+    case "3D":
+      ticketPrice = 17000;
+      break;
+
+    case "IMAX":
+      ticketPrice = 20000;
+      break;
+  }
+  if (earlyDiscount) {
+    ticketPrice = ticketPrice * 0.8; // 20% 할인
+  }
+  return ticketPrice * numberOfViewer;
+};
+```
+
+이렇게 해봤는데 AI는 해당 상황에서 default 조건을 넣어서 0원에 예매되는 상황을 방지 하라고 조언해줬습니다.
+처음 ticketPrice를 0원으로 설정해둬서 생긴 일이라고 생각됩니다.
+default를 안쓰려면 처음 ticketPrice를 일반(14000)으로 생각하고 만들었어야 됐겠네요.

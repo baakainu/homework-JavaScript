@@ -153,3 +153,40 @@ console.log(calculatePoints(30000, "일반"));
 // 소수점 버림 테스트 (990원 결제 시 0.5%는 4.95원)
 console.log(calculatePoints(990, "일반"));
 // 4.95 -> 소수점 버림 -> 출력: 4
+
+// 5) 영화 티켓 가격 계산
+const totalPrice = function (movieType, earlyDiscount, numberOfViewer) {
+  let ticketPrice = 0;
+
+  // 1. 영화 타입별 기본 가격 설정
+  if (movieType === "일반") {
+    ticketPrice = 14000;
+  } else if (movieType === "3D") {
+    ticketPrice = 17000;
+  } else if (movieType === "IMAX") {
+    ticketPrice = 20000;
+  }
+
+  // 2. 조조 할인 적용 여부 (20% 할인)
+  if (earlyDiscount === true) {
+    ticketPrice = ticketPrice * 0.8;
+  }
+
+  // 3. 인원수만큼 곱해서 반환
+  return ticketPrice * numberOfViewer;
+};
+
+// --- 실행 결과 확인 (테스트) ---
+
+// 예시: 3D 영화(17,000원), 조조 할인(20% Off -> 13,600원), 2명
+console.log(totalPrice("3D", true, 2));
+// 계산: 17000 * 0.8 = 13600 -> 13600 * 2 = 27200
+// 출력: 27200
+
+// 일반 영화(14,000원), 할인 없음, 1명
+console.log(totalPrice("일반", false, 1));
+// 출력: 14000
+
+// IMAX 영화(20,000원), 조조 할인(16,000원), 3명
+console.log(totalPrice("IMAX", true, 3));
+// 출력: 48000
