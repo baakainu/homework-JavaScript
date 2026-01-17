@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3주차 과제 - 캐러셀 컴포넌트</title>
+    <link rel="stylesheet" href="./3주차과제.css" />
+    <script src="./3주차과제.js" defer></script>
+  </head>
+  <body>
+    <section class="carousel" aria-label="주요 소식 캐러셀">
+      <div class="carousel__container">
+        <ul class="carousel__track">
+          <li class="carousel__item">
+            <article class="card">
+              <h2 class="card__title">
+                <a href="#" class="card__link">타이틀 링크 01</a>
+              </h2>
+              <p class="card__content">
+                <a href="#" class="content__link"
+                  >첫 번째 콘텐츠의 내용입니다.<br />포커스와 호버 상태를
+                  확인해보세요.</a
+                >
+              </p>
+            </article>
+          </li>
+          <li class="carousel__item">
+            <article class="card">
+              <h2 class="card__title">
+                <a href="#" class="card__link">타이틀 링크 02</a>
+              </h2>
+              <p class="card__content">
+                <a href="#" class="content__link"
+                  >두 번째 콘텐츠입니다.<br />다음 버튼을 눌러보세요.</a
+                >
+              </p>
+            </article>
+          </li>
+          <li class="carousel__item">
+            <article class="card">
+              <h2 class="card__title">
+                <a href="#" class="card__link">타이틀 링크 03</a>
+              </h2>
+              <p class="card__content">
+                <a href="#" class="content__link"
+                  >세 번째 콘텐츠입니다.<br />무한 루프 기능을 테스트하세요.</a
+                >
+              </p>
+            </article>
+          </li>
+        </ul>
+      </div>
+      <div class="carousel__controls">
+        <button type="button" class="nav-btn prev" aria-label="이전 슬라이드">
+          &lt;
+        </button>
+        <span class="carousel__status">
+          <span class="current-index">1</span> /
+          <span class="total-count">3</span>
+        </span>
+        <button type="button" class="nav-btn next" aria-label="다음 슬라이드">
+          &gt;
+        </button>
+      </div>
+    </section>
+  </body>
+</html>
