@@ -1,0 +1,11 @@
+{
+  "name": "carousel-component",
+  "version": "1.3.6",
+  "main": "3주차과제.js",
+  "scripts": {
+    "dev": "bun x serve"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  }
+}
