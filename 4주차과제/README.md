@@ -27,3 +27,24 @@ display: none 에서
 --active 로 바뀌니 미리 준비해둔 스타일을 보여준다.
 
 라고 생각을 하고 js 를 만들어보면 좋겠다 생각했습니다.
+
+## 2. js 작성
+
+먼저 재료를 준비했습니다.
+뒤에서 forEach를 돌리기 위해 querySelectorAll을 사용해 가져왔습니다.
+
+그리고 함수에 targetId, clickedButton 을 둘 다 받아서,
+버튼을 찾는 과정 없이 받은 버트를 바로 사용했습니다.
+
+document.querySelector('.tab-panel--active') 로 현재 켜진 패널과 버튼만 찾아서 끄려고 했지만,
+한번에 다 끄고 필요한 곳 만 다시 켜게끔 만들었습니다.
+
+다 끈 후 targetId를 찾아서 켜기 위해 getElementById 를 사용했습니다.
+함수 시작때 받은 clickedButton 을 바로 사용하여 버튼도 활성화 해줍니다.
+
+각 버튼을 예습한 이벤트 리스너에 연결합니다.
+
+그리고 마지막으로 위에서 빼먹은 웹접근성을 체크했습니다.
+setAttribute 를 사용하여
+선택되지 않은 곳에는 "aria-selected", "false",
+선택된 곳은 "aria-selected", "true" 로 상태를 바꿔줍니다.
